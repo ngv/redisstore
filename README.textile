@@ -28,7 +28,7 @@ Run ringo to start the Ringo shell.
 
 Connect to a server:
 
-@var redis = new require("ngv/redis").connect();@
+@var redis = require("ngv/redis").connect();@
 
 Add a new key:
 
@@ -37,6 +37,9 @@ Add a new key:
 Now get the key you just added:
 
 @redis.get("mykey");@
+
+Multiple results (eg results from smembers()) will return an Java List of bytes.
+The 
 
 And to disconnect:
 
