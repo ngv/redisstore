@@ -1,19 +1,14 @@
 
 h1. Redisstore
 
-Redisstore is a Javascript client for the "Redis":http://code.google.com/p/redis/ key-value database for RingoJS.
+Redisstore is RingoJS store implementation using "Redis":http://code.google.com/p/redis/ key-value database as the backend.
 
-It uses "jredis":http://code.google.com/p/jredis/ Java Redis client library.
-
-The intention is to provide a thin wrapper around the jredis client library, while at the same time making using it via Javascript more convenient then direct access to the libraries Java API. 
+It uses "redis-ringojs-client":http://github.com/ngv/redis-ringojs-client  JS Redis client library.
 
 
 h2. Limitations
 
-This initial version only provides a limited number of redis commands. It is intended to support all commands that are provided by the jredis client library.
-Currently supported commands are:
-
-@get, set, sadd, smembers@
+This initial version does not provide transactions.
 
 
 h1. Installation
@@ -25,25 +20,6 @@ Run the following command with a recent git version of RingoJS:
 h1. Usage
 
 Run ringo to start the Ringo shell.
-
-Connect to a server:
-
-@var redis = require("ngv/redis").connect();@
-
-Add a new key:
-
-@redis.set("mykey", "avalue");@
-
-Now get the key you just added:
-
-@redis.get("mykey");@
-
-Multiple results (eg results from smembers()) will return an Java List of bytes.
-The 
-
-And to disconnect:
-
-client.close();
 
 
 
