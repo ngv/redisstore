@@ -34,13 +34,26 @@ exports.testIdCounter = function () {
     person1.save();
     person2.save();
 
-    assert.isNotNull(Person.get(1));
-    assert.isNotNull(Person.get(2));
+    assert.isNotNull(Person.get(person1._id));
+    assert.isNotNull(Person.get(person2._id));
 
-    assert.equal(Person.get(1)._id, 1);
-    assert.equal(Person.get(2)._id, 2);
+    assert.equal(Person.get(person1._id)._id, person1._id);
+    assert.equal(Person.get(person2._id)._id, person2._id);
 
 }
+
+exports.testGetAll = function () {
+
+    var person1 = createTestPerson();
+    var person2 = createTestPerson();
+
+    person1.save();
+    person2.save();
+
+    assert.equal(Person.all().length, 2);
+
+}
+
 
 function createTestPerson() {
     return new Person({firstName: FIRST_NAME_1, lastName: LAST_NAME,
