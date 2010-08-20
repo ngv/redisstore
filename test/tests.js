@@ -25,11 +25,30 @@ exports.testPersistCreation = function () {
     assert.strictEqual(VITAE_1, person.vitae);
 };
 
+
+exports.testIdCounter = function () {
+
+    var person1 = createTestPerson();
+    var person2 = createTestPerson();
+
+    person1.save();
+    person2.save();
+
+    assert.isNotNull(Person.get(1));
+    assert.isNotNull(Person.get(2));
+
+    assert.equal(Person.get(1)._id, 1);
+    assert.equal(Person.get(2)._id, 2);
+
+}
+
 function createTestPerson() {
     return new Person({firstName: FIRST_NAME_1, lastName: LAST_NAME,
             birthDate: new Date(BIRTH_DATE_MILLIS), birthYear: BIRTH_YEAR,
             vitae: VITAE_1});
 }
+
+
 
 function assertPerson(person) {
     assert.isNotNull(person);
