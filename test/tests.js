@@ -51,6 +51,7 @@ exports.testGetAll = function () {
     person2.save();
 
     assert.equal(Person.all().length, 2);
+    assert.equal(Person.all()[1]._id, person2._id);
 
 }
 
